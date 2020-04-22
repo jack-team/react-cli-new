@@ -1,0 +1,43 @@
+{
+  "name": "react-cli-new",
+  "version": "1.0.0",
+  "description": "react cli",
+  "main": "index.js",
+  "repository": "git@github.com:jack-team/react-cli-new.git",
+  "author": "jacker",
+  "license": "MIT",
+  "scripts":{
+    "start":"node config/run.js --input=./server.js --port=9696 --ip=localhost --mode=development"
+  },
+  "devDependencies":{
+    "ip":"^1.1.5",
+    "argv":"^0.0.2",
+    "file-loader": "^6.0.0",
+    "url-loader": "^4.1.0",
+    "autoprefixer":"^9.7.6",
+    "node-sass": "^4.13.1",
+    "minimist":"^1.2.5",
+    "webpack":"^4.42.1",
+    "typescript":"^3.8.3",
+    "ts-loader":"^7.0.1",
+    "sass-loader":"^8.0.2",
+    "webpack-cli":"^3.3.11",
+    "css-loader":"^3.5.2",
+    "postcss-loader":"^3.0.0",
+    "@babel/core":"^7.9.0",
+    "babel-loader":"^8.1.0",
+    "@babel/register":"^7.9.0",
+    "@babel/preset-env":"^7.9.5",
+    "webpack-dev-server":"^3.10.3",
+    "@babel/plugin-transform-runtime":"^7.9.0",
+    "@babel/plugin-proposal-decorators":"^7.8.3",
+    "html-webpack-plugin":"^4.2.0",
+    "mini-css-extract-plugin":"^0.9.0"
+  },
+  "dependencies":{
+
+  },
+  "browserslist": [
+    "last 10 versions"
+  ]
+}
