@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 //ts转换
 loaders.push({
-    test: /\.tsx|ts?$/,
+    test: /\.tsx|ts$/,
     use: `ts-loader`,
     exclude: /node_modules/
 })
@@ -15,12 +15,8 @@ loaders.push({
 //es6转换
 loaders.push({
     test: /\.js$/,
-    use: {
-        loader: `babel-loader`,
-        options: {
-            presets: [`@babel/preset-env`]
-        }
-    }
+    use: `babel-loader`,
+    exclude: /node_modules/
 })
 
 //css转换
@@ -36,7 +32,7 @@ loaders.push({
 })
 
 //解析图片
-loaders.push(   {
+loaders.push({
     test: /\.(jpe?g|png|gif)$/,
     use: [{
         loader: `url-loader`,
@@ -48,7 +44,7 @@ loaders.push(   {
 })
 
 //解析字体
-loaders.push( {
+loaders.push({
     test: /\.(eot|ttf|woff|svg)$/,
     use: [{
         loader: `url-loader`,
