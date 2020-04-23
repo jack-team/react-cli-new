@@ -6,7 +6,7 @@ const args = cache.args = (
     require('minimist')(
         process.argv.splice(2)
     )
-) || {};
+)
 
 const plugins = [
     `@babel/plugin-transform-runtime`

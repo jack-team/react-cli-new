@@ -1,17 +1,17 @@
-import React,{
-    Component
-} from 'react';
-
 import {
     render
 } from 'react-dom';
 
-class App extends Component{
-    render() {
-        return (
-            <div>123456</div>
-        )
-    }
+import React from 'react';
+
+import Routers from './routers';
+
+const App = () => {
+    return (
+        <Routers />
+    )
 }
 
-render(<App />,document.getElementById('app'))
+render(<App />,
+    document.getElementById('app')
+)

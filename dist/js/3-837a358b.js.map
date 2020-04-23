@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/pages/a.tsx"],"names":[],"mappings":"6FAAA,0CAUe,UANF,WACT,OACI,yC","file":"js/3-837a358b.js","sourcesContent":["import React from 'react';\n\nimport './../styles/common.scss';\n\nconst Page = () => {\n    return (\n        <div>a.page</div>\n    )\n}\n\nexport default Page;"],"sourceRoot":""}
