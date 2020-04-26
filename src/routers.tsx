@@ -10,8 +10,10 @@ import {
 } from 'react-router-dom';
 
 const BaseRouter:any = (
-    __DEV__ ? HashRouter : BrowserRouter
+    __dev__ ? HashRouter : BrowserRouter
 )
+
+history
 
 import {
     LazyLoad

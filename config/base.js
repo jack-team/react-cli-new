@@ -5,7 +5,6 @@ import {
 import plugins from './plugins';
 import loaders from './loaders';
 import optimize from './optimize';
-
 import resolve from './../utils/resolve'
 import chunkHash from './../utils/chunkHash';
 

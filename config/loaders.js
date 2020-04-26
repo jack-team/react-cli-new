@@ -2,7 +2,7 @@ const loaders = [];
 import { args } from '../utils/cache';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-const __DEV__ = (
+const __dev__ = (
     args.env === `development`
 )
 
@@ -23,9 +23,9 @@ loaders.push({
 //css 转换
 const minCssLoader = {
     options: {
-        hmr: __DEV__,
+        hmr: __dev__,
         esModule: true,
-        reloadAll: __DEV__
+        reloadAll: __dev__
     },
     loader: MiniCssExtractPlugin.loader
 }

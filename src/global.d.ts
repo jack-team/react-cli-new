@@ -7,3 +7,5 @@ declare module '*.bmp';
 declare module '*.tiff';
 declare module '*.scss';
 declare module '*.less';
+
+declare var __dev__: boolean;

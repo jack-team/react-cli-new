@@ -12,7 +12,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const plugins = [];
 
-const __DEV__ = (
+const __dev__ = (
     args.env === `development`
 )
 
@@ -24,7 +24,7 @@ plugins.push(
 //环境变量
 plugins.push(
     new webpack.DefinePlugin({
-        __DEV__: __DEV__
+        __dev__: __dev__
     })
 )
 
@@ -38,7 +38,7 @@ plugins.push(
 //提取css
 plugins.push(
     new MiniCssExtractPlugin({
-        filename: `css/[name]${chunkHash(__DEV__, `content`)}.css`
+        filename: `css/[name]${chunkHash(__dev__, `content`)}.css`
     })
 )
 
