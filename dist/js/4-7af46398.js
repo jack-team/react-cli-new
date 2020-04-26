@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{QeBL:function(e,t,n){"use strict";n.r(t);var c=n("ZZRV"),o=n.n(c),u=n("FR5j");t.default=function(e){var t=Object(c.useState)(0),n=t[0],a=t[1],r=Object(c.useCallback)((function(){return a(n+1)}),[n]);return Object(c.useEffect)((function(){return console.log("挂载了"),function(){}}),[0]),o.a.createElement("div",null,o.a.createElement("button",{onClick:r},"点击"),o.a.createElement(u.b,{to:"/a",role:"button"},"跳转页面",n))}}}]);
-//# sourceMappingURL=4-7af46398.js.map

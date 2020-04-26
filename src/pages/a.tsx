@@ -1,10 +1,12 @@
 import React from 'react';
 
-import './../styles/common.scss';
+import styles from './../styles/common.scss'
 
 const Page = () => {
     return (
-        <div>a.page</div>
+        <div className={styles.a}>
+            a.page
+        </div>
     )
 }
 

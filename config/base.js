@@ -1,81 +1,48 @@
-import webpack from 'webpack';
-import { args } from './cache';
+import {
+    args
+} from '../utils/cache';
+
+import plugins from './plugins';
 import loaders from './loaders';
-import {resolve, chunkHash} from './utils';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import optimize from './optimize';
+
+import resolve from './../utils/resolve'
+import chunkHash from './../utils/chunkHash';
 
 const __DEV__ = (
     args.env === `development`
 )
 
-const entry = {
-    'app-in': resolve(`src/index.tsx`)
+const _entry_ = {
+    app_in: resolve(`src/index.tsx`)
 }
 
-const output = {
+const _output_ = {
     path: resolve(`dist`),
-    filename: `js/[name]${chunkHash(__DEV__,`chunk`)}.js`
+    filename:   `js/[name]${chunkHash(__DEV__, `chunk`)}.js`
 }
 
-const config = {
-    module: {},
-    resolve: {},
-    plugins: [],
-    entry: entry,
-    output: output,
+const _module_ = {
+    rules:loaders
+}
+
+const _resolve_ = {
+    modules:[
+        resolve(`src`),
+        resolve(`node_modules`)
+    ],
+    extensions:[
+        `.tsx`, `.ts`, `.js`, `.json`,`.less`
+    ]
+}
+
+export default {
     mode: args.mode,
-    optimization: {},
-    devtool: `source-map`
+    entry: _entry_,
+    output: _output_,
+    plugins: plugins,
+    module: _module_,
+    resolve: _resolve_,
+    devtool: `source-map`,
+    optimization: optimize
 }
-
-//loader
-config.module.rules = loaders;
-
-//设置后缀
-config.resolve.extensions = [
-    `.tsx`, `.ts`, `.js`, `.json`
-]
-
-config.plugins.push(
-    new HtmlWebpackPlugin({
-        template: resolve(`tpl.html`)
-    })
-)
-
-config.plugins.push(
-    new MiniCssExtractPlugin({
-        filename: `css/[name]${chunkHash(__DEV__,`content`)}.css`
-    })
-)
-
-//环境变量
-config.plugins.push(
-    new webpack.DefinePlugin({
-        __DEV__: __DEV__
-    })
-)
-
-//设置打包优化
-const cacheGroups = {
-    commons: {
-        test: /src/,
-        minChunks: 2,
-        name: `commons`
-    },
-    libs: {
-        name: `libs`,
-        test: /node_modules/
-    }
-}
-
-config.optimization.runtimeChunk = {
-    name: `runtime`
-}
-
-config.optimization.splitChunks = {
-    chunks: `all`,
-    cacheGroups: cacheGroups
-}
-
-export default config;

@@ -1,7 +1,9 @@
 import webpack from 'webpack';
-import * as utils from './utils';
 import webpackConfig from './base';
+import buildLog from './../utils/buildLog';
+import pointError from './../utils/pointError';
 import TerserPlugin from 'terser-webpack-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 webpackConfig.plugins.push(
     new TerserPlugin({
@@ -12,18 +14,20 @@ webpackConfig.plugins.push(
 )
 
 webpackConfig.plugins.push(
+    new OptimizeCSSAssetsPlugin({})
+)
+
+webpackConfig.plugins.push(
     new webpack.ProgressPlugin({
         profile: true
     })
 )
 
-webpackConfig.plugins.push(
-    utils.pointErrorLogPlugin
-)
+webpackConfig.plugins.push(pointError);
 
 webpackConfig.plugins.push(
     new webpack.HashedModuleIdsPlugin()
 )
 
-webpack(webpackConfig,utils.outputLogPlugin);
+webpack(webpackConfig,buildLog);
 

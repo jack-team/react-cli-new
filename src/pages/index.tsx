@@ -8,6 +8,8 @@ import {
     Link
 } from 'react-router-dom';
 
+import './../styles/common.scss'
+
 const Page = (props:any) => {
     const [
         count,

@@ -7,22 +7,23 @@
   "author": "jacker",
   "license": "MIT",
   "scripts":{
-    "start":"node config/run.js --input=./server.js --env=development --port=9696 --ip=localhost --mode=development",
-    "build:dev":"node config/run.js --input=./build.js --mode=production --env=development",
-    "build:pro":"node config/run.js --input=./build.js --mode=production --env=production"
+    "start":"node run_es --input=./config/server.js --env=development --port=9696 --ip=localhost --mode=development",
+    "build:dev":"node run_es --input=./config/build.js --mode=production --env=development",
+    "build:pro":"node run_es --input=./config/build.js --mode=production --env=production"
   },
   "devDependencies":{
     "ip":"^1.1.5",
     "argv":"^0.0.2",
+    "happypack":"^5.0.1",
+    "node-sass": "^4.14.0",
+    "sass-loader": "^7.3.1",
     "file-loader": "^6.0.0",
     "url-loader": "^4.1.0",
     "autoprefixer":"^9.7.6",
-    "node-sass": "^4.13.1",
     "minimist":"^1.2.5",
     "webpack":"^4.42.1",
     "typescript":"^3.8.3",
     "ts-loader":"^7.0.1",
-    "sass-loader":"^8.0.2",
     "webpack-cli":"^3.3.11",
     "css-loader":"^3.5.2",
     "postcss-loader":"^3.0.0",
@@ -37,7 +38,8 @@
     "@babel/plugin-syntax-dynamic-import":"^7.8.3",
     "html-webpack-plugin":"^4.2.0",
     "mini-css-extract-plugin":"^0.9.0",
-    "terser-webpack-plugin":"^2.3.5"
+    "terser-webpack-plugin":"^2.3.5",
+    "optimize-css-assets-webpack-plugin":"^5.0.3"
   },
   "dependencies":{
     "react": "^16.13.1",
