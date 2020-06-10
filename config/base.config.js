@@ -42,6 +42,6 @@ export default {
     plugins: plugins,
     module: _module_,
     resolve: _resolve_,
-    devtool: `source-map`,
-    optimization: optimize
+    optimization: optimize,
+    devtool: __DEV__?`source-map`:``
 }

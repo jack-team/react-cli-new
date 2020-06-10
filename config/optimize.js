@@ -6,10 +6,12 @@ const _cacheGroups_ = {
     commons: {
         test: /src/,
         minChunks: 2,
-        name: `commons`
+        chunks: `all`,
+        maxInitialRequests:5
     },
     libs: {
         name: `libs`,
+        chunks: `initial`,
         test: /node_modules/
     },
     styles: {
@@ -28,6 +30,7 @@ const _splitChunks_ = {
 }
 
 export default {
+    chunkIds:`named`,
     splitChunks: _splitChunks_,
     runtimeChunk:_runtimeChunk_
 }

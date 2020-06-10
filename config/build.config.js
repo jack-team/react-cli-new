@@ -1,6 +1,6 @@
 import webpack from 'webpack';
+import log from './../utils/log';
 import webpackConfig from './base.config';
-import buildLog from './../utils/buildLog';
 import pointError from './../utils/pointError';
 import TerserPlugin from 'terser-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
@@ -9,7 +9,7 @@ webpackConfig.plugins.push(
     new TerserPlugin({
         cache: true,
         parallel: true,
-        sourceMap:false
+        sourceMap: false
     })
 )
 
@@ -29,5 +29,5 @@ webpackConfig.plugins.push(
     new webpack.HashedModuleIdsPlugin()
 )
 
-webpack(webpackConfig,buildLog);
+webpack(webpackConfig, log);
 

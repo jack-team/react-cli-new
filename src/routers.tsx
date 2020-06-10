@@ -13,8 +13,6 @@ const BaseRouter:any = (
     __dev__ ? HashRouter : BrowserRouter
 )
 
-history
-
 import {
     LazyLoad
 } from './components/index';

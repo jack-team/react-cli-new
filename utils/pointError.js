@@ -24,7 +24,7 @@ export default function () {
 
         if (_ended_ && length > 0) {
             errors.forEach(error => {
-                console.log(error.message)
+                console.error(error.message)
             })
             return process.exit(1);
         }
