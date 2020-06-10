@@ -25,30 +25,42 @@ const minCssLoader = {
     options: {
         hmr: __dev__,
         esModule: true,
+        singleton: true,
         reloadAll: __dev__
     },
     loader: MiniCssExtractPlugin.loader
 }
 
+//处理 node_modules 的css 不加入 Module
 loaders.push({
     test: /\.(sc|c)ss$/,
-    exclude: /node_modules/,
+    include: /node_modules/,
     loader: [
         minCssLoader,
         `happypack/loader?id=happySass`
     ]
 })
 
+//处理不在 node_modules 里的css加入 Module
+loaders.push({
+    test: /\.(sc|c)ss$/,
+    exclude: /node_modules/,
+    loader: [
+        minCssLoader,
+        `happypack/loader?id=happySassModule`
+    ]
+})
+
 //解析图片
 loaders.push({
     test: /\.(jpe?g|png|gif)$/,
-    loader:`happypack/loader?id=happyImg`
+    loader: `happypack/loader?id=happyImg`
 })
 
 //解析字体
 loaders.push({
     test: /\.(eot|ttf|woff|svg)$/,
-    loader:`happypack/loader?id=happyFont`
+    loader: `happypack/loader?id=happyFont`
 })
 
 export default loaders;

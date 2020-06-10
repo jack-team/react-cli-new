@@ -22,13 +22,11 @@ const _cssLoader_ = {
     }
 }
 
-const _options_ = {
-    verbose: true,
-    id: `happySass`,
-    threadPool: _threadPool_,
-    loaders: [_cssLoader_, `postcss-loader`, `sass-loader`]
-}
-
-export default () => (
-    new HappyPack(_options_)
+export default (module = true) => (
+    new HappyPack({
+        verbose: true,
+        threadPool: _threadPool_,
+        id: `happySass${module ? `Module` : ``}`,
+        loaders: [module ? _cssLoader_ : `css-loader`, `postcss-loader`, `sass-loader`]
+    })
 )

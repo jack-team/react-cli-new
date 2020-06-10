@@ -4,14 +4,12 @@ import {
 
 import React from 'react';
 
-import Routers from './routers';
+import './styles/common.scss'
 
-const App = () => {
-    return (
-        <Routers />
-    )
-}
+import Routers from './routes/index';
 
-render(<App />,
-    document.getElementById('app')
+const App = () => (
+    <Routers />
 )
+
+render(<App />, document.getElementById('app'))

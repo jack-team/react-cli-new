@@ -15,6 +15,7 @@
     "ip":"^1.1.5",
     "argv":"^0.0.2",
     "happypack":"^5.0.1",
+    "style-loader": "^1.2.1",
     "node-sass": "^4.14.0",
     "sass-loader": "^7.3.1",
     "file-loader": "^6.0.0",

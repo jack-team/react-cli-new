@@ -1,9 +1,9 @@
 import webpack from 'webpack';
-import {args} from '../utils/cache';
 import packImg from './pack.img';
 import packScss from './pack.sass';
 import packFont from './pack.font';
-import packLabel from './pack.babel';
+import packBabel from './pack.babel';
+import { args } from '../utils/cache';
 import resolve from './../utils/resolve';
 import chunkHash from './../utils/chunkHash';
 
@@ -17,8 +17,11 @@ const __dev__ = (
 )
 
 plugins.push(
-    packLabel(), packScss(),
-    packImg(), packFont()
+    packBabel(),
+    packScss(true),
+    packScss(false),
+    packImg(),
+    packFont()
 );
 
 //环境变量

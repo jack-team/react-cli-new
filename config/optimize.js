@@ -14,14 +14,14 @@ const _cacheGroups_ = {
         chunks: `initial`,
         test: /node_modules/
     },
-    styles: {
-        chunks: 'all',
-        minChunks: 2,
-        enforce: true,
-        name: 'styles',
-        test: /\.(scss|css)$/,
-        reuseExistingChunk: true
-    }
+    // styles: {
+    //     chunks: 'all',
+    //     minChunks: 2,
+    //     enforce: true,
+    //     name: 'styles',
+    //     test: /\.(scss|css)$/,
+    //     reuseExistingChunk: true
+    // }
 }
 
 const _splitChunks_ = {
