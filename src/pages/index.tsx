@@ -8,7 +8,7 @@ import {
     Link
 } from 'react-router-dom';
 
-import './../styles/common.scss'
+import './../styles/common.scss';
 
 const Page = (props:any) => {
     const [
@@ -21,10 +21,8 @@ const Page = (props:any) => {
     ),[count]);
 
     useEffect(() => {
-        console.log(`挂载了`)
-        return () => {
-
-        }
+        console.log(`挂载了`);
+        return () => {}
     },[0])
 
     return (

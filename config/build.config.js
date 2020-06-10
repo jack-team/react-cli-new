@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import webpackConfig from './base';
+import webpackConfig from './base.config';
 import buildLog from './../utils/buildLog';
 import pointError from './../utils/pointError';
 import TerserPlugin from 'terser-webpack-plugin';

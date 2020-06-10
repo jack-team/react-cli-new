@@ -1,7 +1,7 @@
 import Ip from 'ip';
 import webpack from 'webpack';
-import webpackConfig from './base';
 import cache from '../utils/cache';
+import webpackConfig from './base.config';
 import devServer from 'webpack-dev-server';
 
 const args = cache.args;
