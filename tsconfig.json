@@ -7,10 +7,12 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
+    "strict":true,
     // 编译输出目标 ES 版本
     "target": "es5",
     // 采用的模块系统
     "module": "ESNext",
+    "noImplicitAny":true,
     "lib": [
       "dom",
       "es5",
@@ -19,7 +21,8 @@
       "es2015.promise",
       "dom.iterable"
     ],
-    "experimentalDecorators":true,
+    "experimentalDecorators": true,
+    "strictFunctionTypes": false,
     "allowSyntheticDefaultImports": true
   },
   "include": ["src"],

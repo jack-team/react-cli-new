@@ -35,6 +35,10 @@ const Input = () => {
         )
     };
 
+    const iconSrc = (
+        focus ? search_focus_icon:search_icon
+    );
+
     return (
         <form className={className.join(` `)}>
             <input
@@ -44,7 +48,7 @@ const Input = () => {
                 onFocus={useCallback(onFocus,[])}
             />
             <button type="submit">
-                <img src={focus ? search_focus_icon:search_icon} />
+                <img src={iconSrc} />
             </button>
         </form>
     )

@@ -1,60 +1,86 @@
 import React,{
     useRef,
+    useMemo,
     useState,
     useEffect,
     useCallback
 } from 'react';
 
 import {
-    NavLink
+    NavLink,
+    withRouter,
+    RouteProps
 } from 'react-router-dom';
 
-interface NavItem<T> {
-    path: T,
-    name: T,
-    exact:boolean
-}
-
 const $doc = document;
+
+import {
+    NavItem
+} from './../../types/m';
 
 import styles from './styles.scss';
 
 const initState: boolean = false;
 
 const navList: NavItem<string>[] = [
-    {name: ` 首页`, path: `/`,exact:true},
-    {name: ` 沸点`, path: `/pins`,exact:true},
-    {name: ` 话题`, path: `/topics`,exact:true},
-    {name: ` 小册`, path: `/books`,exact:true},
-    {name: ` 活动`, path: `/events`,exact:true}
+    {name: ` 首页`, path: `/home`,exact:true},
+    {name: ` 沸点`, path: `/home/pins`,exact:true},
+    {name: ` 话题`, path: `/home/topics`,exact:true},
+    {name: ` 小册`, path: `/home/books`,exact:true},
+    {name: ` 活动`, path: `/home/events`,exact:true}
 ];
 
-const onEvent = (fn: (e: MouseEvent) => void) => {
-    const evtType:any = `click`;
-    $doc.addEventListener(evtType, fn);
-    return () => $doc.removeEventListener(evtType, fn);
+const onEvent = (
+    fn: (e: MouseEvent) => void) => (() => {
+        const evtType:any = `click`;
+        $doc.addEventListener(evtType, fn);
+        return () => $doc.removeEventListener(evtType, fn);
+    }
+)
+
+const findName = (path:string) => {
+    const {
+        name
+    } = navList.find((item:NavItem<string>) => (
+        item.path === path
+    )) || {} as NavItem<string>;
+    return name || ``;
 }
 
-const Nav = () => {
+const Nav = (props:RouteProps = {}) => {
+    const {
+        pathname = ``
+    } = props.location || {};
+
     const [
         show,
         setShow
     ] = useState(initState);
 
-    const _Ref: any = useRef();
+    const Ref: any = useRef();
 
-    const _className = (
-        [styles.phone_show_menu]
+    const onClickFn = () => (
+        setShow(!show)
+    )
+
+    const classNameFn = () => {
+        const classList = [
+            styles.phone_show_menu
+        ];
+        if(show) {
+            classList.push(
+                styles.show_menu
+            )
+        };
+        return classList.join(` `);
+    }
+
+    const className = useMemo(
+        classNameFn,[show]
     );
 
-    if (show) {
-        _className.push(
-            styles.show_menu
-        )
-    };
-
     const onMenuClick = useCallback(
-        () => setShow(!show), [show]
+        onClickFn, [show]
     );
 
     const onBodyClick = (
@@ -62,7 +88,7 @@ const Nav = () => {
     ) => {
         const {
             current
-        } = _Ref;
+        } = Ref;
 
         const _target = (
             target as HTMLElement
@@ -73,21 +99,19 @@ const Nav = () => {
         };
     };
 
-    useEffect(() => (
-        onEvent(onBodyClick)
-    ), []);
+    useEffect(onEvent(onBodyClick), []);
 
     return (
         <div
-            ref={_Ref}
+            ref={Ref}
             className={styles.menu_wrapper}
         >
             <nav className={styles.menu_container}>
                 <div
                     onClick={onMenuClick}
-                    className={_className.join(` `)}
+                    className={className}
                 >
-                    <span>首页</span>
+                    <span>{findName(pathname)}</span>
                     <div className={styles.arrow_down} />
                 </div>
                 <div className={styles.header_menu}>
@@ -98,6 +122,7 @@ const Nav = () => {
                                 to={item.path}
                                 key={item.path}
                                 children={item.name}
+                                onClick={onMenuClick}
                                 className={styles.nav_link}
                                 activeClassName={styles.nav_active}
                             />
@@ -109,4 +134,4 @@ const Nav = () => {
     )
 }
 
-export default Nav;
+export default withRouter(Nav);

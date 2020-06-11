@@ -1,33 +1,48 @@
+import React from 'react';
+
+import {
+    Redirect
+} from 'react-router-dom';
+
 import {
     RouteConfig
 } from 'react-router-config';
-
-import App from './../app';
 
 import {
     LazyLoad
 } from './../components/index';
 
+import App from './../app';
+
 type Routes = RouteConfig[];
 
 const rootConfig = (
-    routes:Routes
+    routes: Routes
 ): Routes => [{
     path: `/`,
-    component:App,
+    exact: true,
+    render: () => <Redirect to="/home"/>
+}, {
+    path: `/home`,
+    component: App,
     routes: routes
 }];
 
 const routes: RouteConfig[] = [
     {
-        path: `/`,
+        path: `/home`,
         exact: true,
-        component: LazyLoad(() => import('./../pages/index'))
+        render: () => <Redirect to="/home/index"/>
     },
     {
-        path: `/pins`,
+        path: `/home/index`,
         exact: true,
-        component: LazyLoad(() => import('./../pages/pins'))
+        component: LazyLoad(() => import('./../pages/home/index'))
+    },
+    {
+        path: `/home/pins`,
+        exact: true,
+        component: LazyLoad(() => import('./../pages/pins/index'))
     }
 ];
 

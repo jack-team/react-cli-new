@@ -16,7 +16,7 @@ import {
 
 import styles from './styles.scss';
 
-class Header extends PureComponent<any> {
+class Header extends PureComponent {
     render() {
         return (
             <header className={styles.header_container}>
