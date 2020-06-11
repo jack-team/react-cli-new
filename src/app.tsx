@@ -13,8 +13,12 @@ import {
 
 const App = (props: RouteConfigComponentProps) => {
     const {
-        routes
-    } = props.route;
+        route
+    } = props || {};
+
+    const {
+        routes = []
+    } = route || {};
 
     return (
         <Fragment>

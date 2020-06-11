@@ -14,7 +14,6 @@ const rootConfig = (
     routes:Routes
 ): Routes => [{
     path: `/`,
-
     component:App,
     routes: routes
 }];
@@ -26,11 +25,10 @@ const routes: RouteConfig[] = [
         component: LazyLoad(() => import('./../pages/index'))
     },
     {
-        path: `/a`,
+        path: `/pins`,
         exact: true,
-        component: LazyLoad(() => import('./../pages/a'))
+        component: LazyLoad(() => import('./../pages/pins'))
     }
 ];
-
 
 export default rootConfig(routes);

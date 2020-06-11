@@ -7,7 +7,7 @@
   "author": "jacker",
   "license": "MIT",
   "scripts":{
-    "start":"node run_es --input=./config/server.js --env=development --port=9696 --ip=localhost --mode=development",
+    "start":"node run_es --input=./config/server.js --env=development --port=9696  --mode=development",
     "build:dev":"node run_es --input=./config/build.config.js --mode=production --env=development",
     "build:pro":"node run_es --input=./config/build.config.js --mode=production --env=production"
   },

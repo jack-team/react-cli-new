@@ -9,9 +9,9 @@ import {
 } from 'react-router-dom';
 
 const Page = (props:any) => {
-   return (
-       <div>首页</div>
-   )
+    return (
+        <div>pins</div>
+    )
 }
 
 export default Page;
