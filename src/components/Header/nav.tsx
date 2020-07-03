@@ -23,7 +23,7 @@ import styles from './styles.scss';
 const initState: boolean = false;
 
 const navList: NavItem<string>[] = [
-    {name: ` 首页`, path: `/home`,exact:true},
+    {name: ` 首页`, path: `/home/index`,exact:false},
     {name: ` 沸点`, path: `/home/pins`,exact:true},
     {name: ` 话题`, path: `/home/topics`,exact:true},
     {name: ` 小册`, path: `/home/books`,exact:true},
@@ -47,6 +47,8 @@ const findName = (path:string) => {
     return name || ``;
 }
 
+// @ts-ignore
+@withRouter
 const Nav = (props:RouteProps = {}) => {
     const {
         pathname = ``
@@ -118,9 +120,9 @@ const Nav = (props:RouteProps = {}) => {
                     {navList.map((item) => {
                         return (
                             <NavLink
-                                exact={true}
                                 to={item.path}
                                 key={item.path}
+                                exact={item.exact}
                                 children={item.name}
                                 onClick={onMenuClick}
                                 className={styles.nav_link}
@@ -134,4 +136,4 @@ const Nav = (props:RouteProps = {}) => {
     )
 }
 
-export default withRouter(Nav);
+export default Nav;

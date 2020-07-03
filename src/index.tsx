@@ -6,4 +6,5 @@ import './styles/common.scss'
 
 import Routers from './routes/index';
 
-ReactDom.render(<Routers />, document.getElementById('app'))
+ReactDom.render(<Routers />, document.getElementById('app-root'));
+

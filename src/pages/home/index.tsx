@@ -2,28 +2,34 @@ import React,{
     PureComponent
 }from 'react';
 
+import  'axios';
+
 import {
-    NavItem
+    NavTab
 } from './../../types/m';
 
 import SubNav from './subNav';
 
 import styles from './../../styles/home.scss';
 
-const navList: NavItem<string>[] = [
-    {name: `推荐`, path: `recommended`},
-    {name: `后端`, path: `backend`},
-    {name: `前端`, path: `frontend`},
-    {name: `Android`, path: `android`},
-    {name: `IOS`, path: `ios`},
-    {name: `人工智能`, path: `ai`},
-    {name: `开发工具`, path: `freebie`},
-    {name: `代码人生`, path: `career`},
-    {name: `阅读`, path: `article`}
+const navList: NavTab<string>[] = [
+    {name: `推荐`, tab: `recommended`},
+    {name: `后端`, tab: `backend`},
+    {name: `前端`, tab: `frontend`},
+    {name: `Android`, tab: `android`},
+    {name: `IOS`, tab: `ios`},
+    {name: `人工智能`, tab: `ai`},
+    {name: `开发工具`, tab: `freebie`},
+    {name: `代码人生`, tab: `career`},
+    {name: `阅读`, tab: `article`}
 ];
 
-
 class HomePage extends PureComponent {
+
+    componentDidMount() {
+        
+    }
+
     render() {
         return (
             <div className={styles.body_container}>

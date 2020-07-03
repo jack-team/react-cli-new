@@ -30,18 +30,23 @@ const rootConfig = (
 
 const routes: RouteConfig[] = [
     {
-        path: `/home`,
         exact: true,
+        path: `/home`,
         render: () => <Redirect to="/home/index"/>
     },
     {
-        path: `/home/index`,
         exact: true,
+        path: `/home/index`,
+        render: () => <Redirect to="/home/index/recommended"/>
+    },
+    {
+        exact: true,
+        path: `/home/index/:tab`,
         component: LazyLoad(() => import('./../pages/home/index'))
     },
     {
-        path: `/home/pins`,
         exact: true,
+        path: `/home/pins`,
         component: LazyLoad(() => import('./../pages/pins/index'))
     }
 ];

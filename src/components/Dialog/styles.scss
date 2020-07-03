@@ -1,0 +1,87 @@
+@mixin position {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.dialog_container {
+  z-index: 999;
+  position: fixed;
+  @include position();
+}
+
+.dialog_mask_layer {
+  z-index: 1;
+  position: absolute;
+  @include position();
+  transition-property: opacity;
+}
+
+.dialog_content {
+  z-index: 2;
+  position: absolute;
+}
+
+.dialog_direction_top {
+  top: 0;
+  width: 100%;
+  transform: translate3d(0, -100%, 0);
+  transition-property: transform;
+}
+
+.dialog_direction_bottom {
+  bottom: 0;
+  width: 100%;
+  transform: translate3d(0, 100%, 0);
+  transition-property: transform;
+}
+
+.dialog_direction_left {
+  left: 0;
+  height: 100%;
+  transform: translate3d(-100%, 0, 0);
+  transition-property: transform;
+}
+
+.dialog_direction_right {
+  right: 0;
+  height: 100%;
+  transform: translate3d(100%, 0, 0);
+  transition-property: transform;
+}
+
+.dialog_direction_none {
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transition-property: opacity;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.dialog_direction_center {
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transition-property: opacity, transform;
+  transform: translate3d(-50%, -50%, 0) scale(0);
+}
+
+/*显示*/
+.dialog_content_show {
+  &.dialog_direction_center {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
+
+  &.dialog_direction_none {
+    opacity: 1;
+  }
+
+  &.dialog_direction_left,
+  &.dialog_direction_right,
+  &.dialog_direction_top,
+  &.dialog_direction_bottom {
+    transform: translate3d(0, 0, 0);
+  }
+}

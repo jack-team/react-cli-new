@@ -23,7 +23,16 @@ const serverConfig = {
     inline: true,
     stats: stats,
     compress: false,
-    contentBase: `./`
+    contentBase: `./`,
+    proxy:{
+        '/api':{
+            target: 'http://localhost:6868',
+            pathRewrite: { '^/api': '/api' }
+        }
+    },
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+    }
 }
 
 const server = new devServer(

@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import {
-    NavItem
+    NavTab
 } from './../../types/m';
 
 import {
@@ -19,7 +19,7 @@ import {
 import styles from './../../styles/home.scss';
 
 interface Props extends RouteProps {
-    navList:NavItem<string>[]
+    navList:NavTab<string>[]
 }
 
 // @ts-ignore
@@ -31,21 +31,22 @@ class SubNav extends PureComponent<Props> {
 
     render() {
         const {
-            navList,
-            location
+            navList
         } = this.props;
+
+        console.log(this.props)
 
         return (
             <div className={styles.nav_container}>
                 <Resize>
                     <div className={styles.nav_content}>
-                        {navList.map((nav:NavItem<string>) => {
+                        {navList.map((nav:NavTab<string>) => {
                             return (
                                 <NavLink
-                                    key={nav.path}
+                                    key={nav.tab}
                                     children={nav.name}
-                                    to={`/home/${nav.path}`}
                                     className={styles.nav_item}
+                                    to={`/home/index/${nav.tab}`}
                                     activeClassName={styles.nav_item_active}
                                 />
                             )
